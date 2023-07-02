@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Creative - Start Bootstrap Theme</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+<!--        Tailwind CSS-->
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h1 class="text-xl">Amazon Search Results</h1>
+                {% for product in amazon %}
+        <!--    Product  -->
+        <div class="row p-4 product-container">
+            <div class="col-12 h-[365px] sm:shadow-md px-0">
+                    <div class="overflow-hidden h-[170px]">
+                      <img src="{{product['Image']}}" class="object-cover h-full w-full" alt="product-image"/>
+                    </div>
+                    <div class="flex flex-col p-2 gap-y-2">
+                        <h4 class="font-bold text-clip overflow-scroll h-[60px]">{{product['Name']}}</h4>
+                        <h6>₹{{product['Price']}}</h6>
+                        <br/>
+                        <button class="bg-orange-400 w-full p-2 text-white"><a href="{{product['Product Link']}}" style="text-decoration: none;">Visit Site</a></button>
+                    </div>
+            </div>
+
+            <div class="col-12 text-sm px-0 mt-5">
+<!--                Intro   -->
+                <div class="container">
+                    <h2 class="font-bold">Intro</h2>
+                    <p class="text-clip overflow-scroll h-[60px]">
+                        {{product['Name']}}
+                    </p>
+                </div>
+                <br/>
+<!--                Product Information -->
+                <div class="container d-flex flex-column">
+                    <h5 class="font-bold">Product Information</h5>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td>₹{{product['Price']}}</td>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td>{{product['Rating']}}</td>
+                        </tr>
+                        <tr>
+                            <td>Reviews</td>
+                            <td class="w-100">
+                                <p class="text-clip overflow-scroll h-[150px]">
+                                {{product['Reviews']}}
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br/>
+            {% endfor %}
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <h1 class="text-xl">Flipkart Search Results</h1>
+                {% for product in flipkart %}
+        <!--    Product  -->
+        <div class="row p-4 product-container">
+            <div class="col-12 h-[365px] sm:shadow-md px-0">
+                    <div class="overflow-hidden h-[170px]">
+                        <img src="{{product['Image']}}" class="object-cover h-full w-full" alt="product-image"/>
+                    </div>
+                    <div class="flex flex-col p-2 gap-y-2">
+                        <h4 class="font-bold text-clip overflow-scroll h-[60px]">{{product['Name']}}</h4>
+                        <h6>{{product['Price']}}</h6>
+                        <br/>
+                        <button class="bg-orange-400 w-full p-2 text-white"><a href="{{product['Product Link']}}" style="text-decoration: none;">Visit Site</a></button>
+                    </div>
+            </div>
+            <div class="col-12 text-sm px-0 mt-5">
+<!--                Intro   -->
+                <div class="container">
+                    <h2 class="font-bold">Intro</h2>
+                    <p class="text-clip overflow-scroll h-[60px]">
+                        {{product['Name']}}
+                    </p>
+                </div>
+                <br/>
+<!--                Product Information -->
+                <div class="container d-flex flex-column">
+                    <h5 class="font-bold">Product Information</h5>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td>{{product['Price']}}</td>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td>{{product['Rating']}}</td>
+                        </tr>
+                        <tr>
+                            <td>Reviews</td>
+                            <td class="w-100">
+                                <p class="text-clip overflow-scroll h-[150px]">
+                                {{product['Reviews']}}
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br/>
+            {% endfor %}
+            </div>
+        </div>
+            </div>
+    <style>
+        td{
+            padding: .5rem 0.2rem;
+            max-width: 100%;
+            overflow: hidden;
+            vertical-align: top;
+        }
+        tr td:first-child{
+            font-weight: bold;
+        }
+        .product-container{
+            background: rgb(240, 240, 240);
+            opacity: 1;
+            backdrop-filter: blur(16px);
+        }
+
+    </style>
+    </body>
+</html>
